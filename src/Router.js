@@ -1,5 +1,6 @@
   
 import React from 'react';
+import 'react-native-gesture-handler';
 import {
 	createBottomTabNavigator,
 	createAppContainer,
@@ -10,34 +11,60 @@ import {
 } from 'react-navigation';
 import { Icon } from 'native-base';
 import Calculator from './screens/Calculator/Calculator';
-const Calculations = createBottomTabNavigator({
-	Calculator: {
-		screen: Calculator,
+import Anvil from './screens/Anvil/Anvil';
+import AnvilF from './screens/AnvilF/AnvilF';
+const Calculations = createDrawerNavigator({
+	AnvilF:{
+		screen:AnvilF,
 		navigationOptions: {
-			title: 'Toplu',
+			title: 'Hesaplama',
 			header: null,
 		}
 	},
-	Crop: {
-		screen: Calculator,
+	Anvil: {
+		screen: Anvil,
 		navigationOptions: {
-			title: 'Tek',
+			title: 'Anvil',
 			header: null,
 		}
-	}
+	},
+	Calculator: {
+		screen: Calculator,
+		navigationOptions: {
+			title: 'Hesaplama',
+			header: null,
+		}
+	},
+
+
 }, {
-	tabBarOptions: {
-		// other properties
-		pressColor: 'gray',// for click (ripple) effect color
-		style: {
-			color: 'white',
-			fontWeight:"bold",
+	
+	contentOptions: {
+		activeTintColor: '#009bd9',
+		
+		itemsContainerStyle: {
+			marginVertical: 5,
+			paddingTop: 50,
 		},
-		activeTintColor: '#fff',
-		activeBackgroundColor:"#006064",
-		inactiveBackgroundColor:"#c7c7c7"
+
+		iconContainerStyle: {
+			opacity: 1
+		},
+		overlayColor: "transparent",
+		drawerBackgroundColor: "#2c005d",
+		inactiveBackgroundColor: "white",
+		activeBackgroundColor: "#e3e3e375",
+		backgroundColor:"#2c005d",
+		itemStyle:{
+			borderBottomWidth:1,
+			borderBottomColor:"#e7e7e7"
+		}
+
 	}
-})
+}
+);
+
+
 
 
 const SwitchNavigator = createSwitchNavigator(
